@@ -3,23 +3,20 @@ package ru.stqa.pft.sandbox;
 public class MyFirstProgram {
 
   public static void main(String[] args) {
-    hello("Kirill");
-    hello("Alex");
+//    hello("Kirill");
+//    hello("Alex");
 
-    double l = eq(7);
+    Square s = new Square(5);
 
-    System.out.println(l);
-    System.out.println(eq(9, 7));
+    Rectangle r = new Rectangle(4, 8);
+
+    System.out.println(s.eq());
+    System.out.println(r.eq());
   }
 
-  static void hello(String name) {
-    System.out.println("Hello, " + name);
-  }
+//  static void hello(String name) {
+//    System.out.println("Hello, " + name);
+//  }
 
-  public static double eq(double l) {
-    return l * l;
-  }
-  public static double eq(double l, double b) {
-    return l * b;
-  }
+
 }
