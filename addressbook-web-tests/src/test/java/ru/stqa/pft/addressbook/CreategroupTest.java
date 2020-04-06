@@ -35,6 +35,10 @@ public class CreategroupTest {
     driver = new FirefoxDriver();
     js = (JavascriptExecutor) driver;
     vars = new HashMap<String, Object>();
+    login();
+  }
+
+  private void login() {
     driver.get("http://localhost/addressbook/");
     driver.manage().window().setSize(new Dimension(1000, 694));
     driver.findElement(By.name("user")).sendKeys("admin");
@@ -42,6 +46,7 @@ public class CreategroupTest {
     driver.findElement(By.name("pass")).sendKeys("secret");
     driver.findElement(By.cssSelector("input:nth-child(7)")).click();
   }
+
   @AfterMethod
   public void tearDown() {
     driver.quit();
