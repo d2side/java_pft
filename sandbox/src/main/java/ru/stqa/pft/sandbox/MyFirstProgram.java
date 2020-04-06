@@ -10,8 +10,8 @@ public class MyFirstProgram {
 
     Rectangle r = new Rectangle(4, 8);
 
-    System.out.println(s.eq());
-    System.out.println(r.eq());
+    System.out.println(s.area());
+    System.out.println(r.area());
   }
 
 //  static void hello(String name) {
