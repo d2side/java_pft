@@ -11,4 +11,6 @@ dependencies {
 
 test {
   useTestNG()
+  scanForTestClasses = false
+  include '**/*'
 }

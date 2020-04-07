@@ -20,31 +20,54 @@ public class GroupCreationTest {
     baseUrl = "https://www.google.com/";
     driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
     driver.get("http://localhost/addressbook/group.php");
-    driver.findElement(By.name("user")).clear();
-    driver.findElement(By.name("user")).sendKeys("admin");
-    driver.findElement(By.name("pass")).click();
-    driver.findElement(By.name("pass")).clear();
-    driver.findElement(By.name("pass")).sendKeys("secret");
-    driver.findElement(By.xpath("//input[@value='Login']")).click();
+    login("user", "admin", "pass", "secret", By.xpath("//input[@value='Login']"));
+  }
+
+  private void login(String user, String admin, String pass, String secret, By xpath) {
+    driver.findElement(By.name(user)).clear();
+    driver.findElement(By.name(user)).sendKeys(admin);
+    driver.findElement(By.name(pass)).click();
+    driver.findElement(By.name(pass)).clear();
+    driver.findElement(By.name(pass)).sendKeys(secret);
+    driver.findElement(xpath).click();
   }
 
   @Test
   public void testGroupCreation() throws Exception {
-    driver.findElement(By.linkText("groups")).click();
-    driver.findElement(By.name("new")).click();
+    goToGroupPage("groups");
+    initGroupCreation("new");
+    fillGroupForm();
+    submitGroupCreation("submit");
+    returnToGroupPage();
+  }
+
+  private void returnToGroupPage() {
+    driver.findElement(By.linkText("group page")).click();
+  }
+
+  private void submitGroupCreation(String submit) {
+    driver.findElement(By.name(submit)).click();
+  }
+
+  private void fillGroupForm() {
     driver.findElement(By.name("group_name")).click();
     driver.findElement(By.name("group_name")).clear();
     driver.findElement(By.name("group_name")).sendKeys("group1");
     driver.findElement(By.name("group_header")).click();
     driver.findElement(By.name("group_header")).click();
-    // ERROR: Caught exception [ERROR: Unsupported command [doubleClick | name=group_header | ]]
     driver.findElement(By.name("group_header")).clear();
     driver.findElement(By.name("group_header")).sendKeys("group1");
     driver.findElement(By.name("group_footer")).click();
     driver.findElement(By.name("group_footer")).clear();
     driver.findElement(By.name("group_footer")).sendKeys("group1");
-    driver.findElement(By.name("submit")).click();
-    driver.findElement(By.linkText("group page")).click();
+  }
+
+  private void initGroupCreation(String s) {
+    driver.findElement(By.name(s)).click();
+  }
+
+  private void goToGroupPage(String groups) {
+    driver.findElement(By.linkText(groups)).click();
   }
 
   @AfterClass(alwaysRun = true)

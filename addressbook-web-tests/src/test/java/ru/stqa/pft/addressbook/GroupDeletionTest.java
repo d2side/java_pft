@@ -7,7 +7,7 @@ import org.openqa.selenium.*;
 import org.openqa.selenium.firefox.FirefoxDriver;
 
 
-public class GroupDeletionTest extends TestBase {
+public class GroupDeletionTest  {
    WebDriver driver;
    String baseUrl;
    boolean acceptNextAlert = true;
