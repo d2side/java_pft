@@ -9,7 +9,8 @@ import static org.testng.Assert.fail;
 
 public class ApplicationManager {
   WebDriver driver;
-  private GroupHelper groupHelper;
+  public NavigationHelper navigationHelper;
+  public GroupHelper groupHelper;
   String baseUrl;
   boolean acceptNextAlert = true;
   StringBuffer verificationErrors = new StringBuffer();
@@ -20,10 +21,11 @@ public class ApplicationManager {
     driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
     driver.get("http://localhost/addressbook/group.php");
     groupHelper = new GroupHelper(driver);
+    navigationHelper = new NavigationHelper(driver);
     login("admin", "secret");
   }
 
-  private void login(String admin, String secret) {
+  public void login(String admin, String secret) {
     driver.findElement(By.name("user")).clear();
     driver.findElement(By.name("user")).sendKeys(admin);
     driver.findElement(By.name("pass")).click();
@@ -75,5 +77,9 @@ public class ApplicationManager {
 
   public GroupHelper getGroupHelper() {
     return groupHelper;
+  }
+
+  public NavigationHelper getNavigationHelper() {
+    return navigationHelper;
   }
 }

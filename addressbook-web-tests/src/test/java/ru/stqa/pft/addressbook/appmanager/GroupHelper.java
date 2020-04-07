@@ -7,7 +7,7 @@ import ru.stqa.pft.addressbook.model.GroupData;
 public class GroupHelper {
 
 
-  public WebDriver driver;
+  private WebDriver driver;
 
   public GroupHelper(WebDriver driver) {
     this.driver = driver;
@@ -38,7 +38,6 @@ public class GroupHelper {
   public void initGroupCreation() {
     driver.findElement(By.name("new")).click();
   }
-
   public void goToGroupPage() {
     driver.findElement(By.linkText("groups")).click();
   }
