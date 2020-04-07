@@ -16,7 +16,7 @@ import org.testng.annotations.BeforeMethod;
 
 import java.util.*;
 
-public class CreategroupTest {
+public class GroupCreationTest {
   private WebDriver driver;
   private Map<String, Object> vars;
   JavascriptExecutor js;
@@ -42,7 +42,7 @@ public class CreategroupTest {
     driver.quit();
   }
   @Test
-  public void creategroup() {
+  public void testGroupCreation() {
 
     goToGroupPage("groups");
     initGroupCreation("new");
