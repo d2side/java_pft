@@ -2,21 +2,13 @@ package ru.stqa.pft.sandbox;
 
 public class MyFirstProgram {
 
+
   public static void main(String[] args) {
-//    hello("Kirill");
-//    hello("Alex");
+    Point a = new Point(7, 9);
+    Point b = new Point(21, 17);
+    double i =  Point.distance(a, b);
+    System.out.println(i);
 
-    Square s = new Square(5);
-
-    Rectangle r = new Rectangle(4, 8);
-
-    System.out.println(s.area());
-    System.out.println(r.area());
   }
-
-//  static void hello(String name) {
-//    System.out.println("Hello, " + name);
-//  }
-
 
 }

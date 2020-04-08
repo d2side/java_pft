@@ -15,6 +15,8 @@ public class ApplicationManager {
   boolean acceptNextAlert = true;
   StringBuffer verificationErrors = new StringBuffer();
 
+  private SessionHelper sessionHelper;
+
   public void init() {
     driver = new FirefoxDriver();
     baseUrl = "https://www.google.com/";
@@ -22,17 +24,11 @@ public class ApplicationManager {
     driver.get("http://localhost/addressbook/group.php");
     groupHelper = new GroupHelper(driver);
     navigationHelper = new NavigationHelper(driver);
-    login("admin", "secret");
+    sessionHelper = new SessionHelper(driver);
+    sessionHelper.login("admin", "secret");
   }
 
-  public void login(String admin, String secret) {
-    driver.findElement(By.name("user")).clear();
-    driver.findElement(By.name("user")).sendKeys(admin);
-    driver.findElement(By.name("pass")).click();
-    driver.findElement(By.name("pass")).clear();
-    driver.findElement(By.name("pass")).sendKeys(secret);
-    driver.findElement(By.xpath("//input[@value='Login']")).click();
-  }
+
 
   public void stop() {
     driver.quit();
