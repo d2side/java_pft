@@ -40,4 +40,8 @@ public class GroupHelper extends HelperBase {
   public void selectGroup(By name) {
     click(name);
   }
+
+  public void initGroupModification() {
+    click(By.name("edit"));
+  }
 }

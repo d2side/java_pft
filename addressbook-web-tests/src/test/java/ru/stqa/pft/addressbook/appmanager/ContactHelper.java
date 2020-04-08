@@ -2,12 +2,13 @@ package ru.stqa.pft.addressbook.appmanager;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import ru.stqa.pft.addressbook.tests.TestBase;
 
-public class ContactHelper {
+public class ContactHelper extends HelperBase {
   WebDriver driver;
 
   public ContactHelper(WebDriver driver) {
-    this.driver = driver;
+    super(driver);
   }
 
   public void returnToHomePage() {
@@ -42,7 +43,11 @@ public class ContactHelper {
   }
 
   public void initialContactCreation() {
-    driver.findElement(By.linkText("add new")).click();
-    driver.findElement(By.xpath("//a[contains(text(),'add new')]")).click();
+    click(By.linkText("add new"));
+    click(By.xpath("//a[contains(text(),'add new')]"));
+  }
+
+  public void submitGroupModification() {
+    click(By.name("update"));
   }
 }
