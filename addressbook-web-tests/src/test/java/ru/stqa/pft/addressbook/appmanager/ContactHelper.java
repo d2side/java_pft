@@ -12,34 +12,20 @@ public class ContactHelper extends HelperBase {
   }
 
   public void returnToHomePage() {
-    driver.findElement(By.linkText("home page")).click();
+    click(By.linkText("home page"));
   }
 
   public void submitContactCreation() {
-    driver.findElement(By.xpath("(//input[@name='submit'])[2]")).click();
+    click(By.xpath("(//input[@name='submit'])[2]"));
   }
 
   public void fillContactForm() {
-    driver.findElement(By.name("firstname")).click();
-    driver.findElement(By.name("firstname")).clear();
-    driver.findElement(By.name("firstname")).sendKeys("Kir");
-    driver.findElement(By.name("theform")).click();
-    driver.findElement(By.name("middlename")).click();
-    driver.findElement(By.name("middlename")).clear();
-    driver.findElement(By.name("middlename")).sendKeys("Mak");
-    driver.findElement(By.name("lastname")).click();
-    driver.findElement(By.name("lastname")).clear();
-    driver.findElement(By.name("lastname")).sendKeys("Lik");
-    driver.findElement(By.name("theform")).click();
-    driver.findElement(By.name("nickname")).click();
-    driver.findElement(By.name("nickname")).clear();
-    driver.findElement(By.name("nickname")).sendKeys("DS");
-    driver.findElement(By.name("title")).click();
-    driver.findElement(By.name("title")).clear();
-    driver.findElement(By.name("title")).sendKeys("QA Automation engineer");
-    driver.findElement(By.name("company")).click();
-    driver.findElement(By.name("company")).clear();
-    driver.findElement(By.name("company")).sendKeys("R4");
+    type(By.name("firstname"), "Kir");
+    type(By.name("middlename"), "Mak");
+    type(By.name("lastname"), "Lik");
+    type(By.name("nickname"), "DS");
+    type(By.name("title"), "QA Automation engineer");
+    type(By.name("company"), "R4");
   }
 
   public void initialContactCreation() {
