@@ -9,6 +9,7 @@ import static org.testng.Assert.fail;
 
 public class ApplicationManager {
   WebDriver driver;
+  private ContactHelper contactHelper;
   public NavigationHelper navigationHelper;
   public GroupHelper groupHelper;
   String baseUrl;
@@ -22,6 +23,7 @@ public class ApplicationManager {
     baseUrl = "https://www.google.com/";
     driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
     driver.get("http://localhost/addressbook/");
+    contactHelper = new ContactHelper(driver);
     groupHelper = new GroupHelper(driver);
     navigationHelper = new NavigationHelper(driver);
     sessionHelper = new SessionHelper(driver);
@@ -77,5 +79,9 @@ public class ApplicationManager {
 
   public NavigationHelper getNavigationHelper() {
     return navigationHelper;
+  }
+
+  public ContactHelper getContactHelper() {
+    return contactHelper;
   }
 }
