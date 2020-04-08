@@ -36,4 +36,21 @@ public class ContactHelper extends HelperBase {
   public void submitGroupModification() {
     click(By.name("update"));
   }
+
+  public void initiateContactEditing() {
+    click(By.xpath("//img[@alt='Edit']"));
+  }
+
+  public void fillContactFormForEditing() {
+    type(By.name("firstname"), "Alex");
+    type(By.name("middlename"), "Valeryevich");
+    type(By.name("lastname"), "Listec");
+    type(By.name("nickname"), "Kirez");
+    type(By.name("title"), "Посудомойщик");
+    type(By.name("company"), "Filmar");
+  }
+
+  public void updateEditedContactForm() {
+    click(By.xpath("//input[@name='update'][2]"));
+  }
 }
