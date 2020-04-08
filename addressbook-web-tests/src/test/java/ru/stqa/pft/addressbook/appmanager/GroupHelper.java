@@ -4,49 +4,40 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import ru.stqa.pft.addressbook.model.GroupData;
 
-public class GroupHelper {
+public class GroupHelper extends HelperBase {
 
-
-  private WebDriver driver;
 
   public GroupHelper(WebDriver driver) {
-    this.driver = driver;
+    super(driver);
   }
 
   public void returnToGroupPage() {
-    driver.findElement(By.linkText("group page")).click();
+    click(By.linkText("group page"));
   }
 
   public void submitGroupCreation() {
-    driver.findElement(By.name("submit")).click();
+    click(By.name("submit"));
   }
 
   public void fillGroupForm(GroupData groupData) {
-    driver.findElement(By.name("group_name")).click();
-    driver.findElement(By.name("group_name")).clear();
-    driver.findElement(By.name("group_name")).sendKeys(groupData.getName());
-    driver.findElement(By.name("group_header")).click();
-    driver.findElement(By.name("group_header")).click();
-    // ERROR: Caught exception [ERROR: Unsupported command [doubleClick | name=group_header | ]]
-    driver.findElement(By.name("group_header")).clear();
-    driver.findElement(By.name("group_header")).sendKeys(groupData.getHeader());
-    driver.findElement(By.name("group_footer")).click();
-    driver.findElement(By.name("group_footer")).clear();
-    driver.findElement(By.name("group_footer")).sendKeys(groupData.getFooter());
+    type(By.name("group_name"), groupData.getName());
+    click(By.name("group_header"));
+    type(By.name("group_header"), groupData.getHeader());
+    type(By.name("group_footer"), groupData.getFooter());
   }
 
   public void initGroupCreation() {
-    driver.findElement(By.name("new")).click();
+    click(By.name("new"));
   }
   public void goToGroupPage() {
-    driver.findElement(By.linkText("groups")).click();
+    click(By.linkText("groups"));
   }
 
   public void deleteSelectedGroup(By xpath) {
-    driver.findElement(xpath).click();
+    click(xpath);
   }
 
   public void selectGroup(By name) {
-    driver.findElement(name).click();
+    click(name);
   }
 }

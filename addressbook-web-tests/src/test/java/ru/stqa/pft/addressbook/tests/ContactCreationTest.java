@@ -1,15 +1,16 @@
 package ru.stqa.pft.addressbook.tests;
 
 import org.testng.annotations.*;
+import org.testng.annotations.Test;
 
 public class ContactCreationTest extends TestBase {
 
   @Test
   public void testContactCreation() throws Exception {
-    applicationManager.getContactHelper().initialContactCreation();
-    applicationManager.getContactHelper().fillContactForm();
-    applicationManager.getContactHelper().submitContactCreation();
-    applicationManager.getContactHelper().returnToHomePage();
+    app.getContactHelper().initialContactCreation();
+    app.getContactHelper().fillContactForm();
+    app.getContactHelper().submitContactCreation();
+    app.getContactHelper().returnToHomePage();
   }
 
 }
