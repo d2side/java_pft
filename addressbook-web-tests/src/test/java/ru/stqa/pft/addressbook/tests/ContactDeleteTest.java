@@ -19,6 +19,22 @@ public class ContactDeleteTest {
   private boolean acceptNextAlert = true;
   private StringBuffer verificationErrors = new StringBuffer();
 
+  @BeforeClass(alwaysRun = true)
+  public void setUp() throws Exception {
+    driver = new FirefoxDriver();
+    baseUrl = "https://www.google.com/";
+    driver.get("http://localhost/addressbook/");
+    driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+    driver.findElement(By.name("user")).clear();
+    driver.findElement(By.name("user")).sendKeys("admin");
+    driver.findElement(By.name("pass")).click();
+    driver.findElement(By.name("pass")).click();
+    driver.findElement(By.name("pass")).clear();
+    driver.findElement(By.name("pass")).sendKeys("secret");
+    driver.findElement(By.xpath("//input[@value='Login']")).click();
+  }
+
+
   @Test
   public void testContactDelete() throws Exception {
     driver.get("http://localhost/addressbook/");

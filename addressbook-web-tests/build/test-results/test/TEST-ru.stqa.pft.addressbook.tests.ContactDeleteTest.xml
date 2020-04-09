@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="ru.stqa.pft.addressbook.tests.ContactDeleteTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2020-04-09T16:14:18" hostname="DESKTOP-3H2R2L7" time="0.597">
+<testsuite name="ru.stqa.pft.addressbook.tests.ContactDeleteTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2020-04-09T16:28:26" hostname="DESKTOP-3H2R2L7" time="0.464">
   <properties/>
-  <testcase name="testContactDelete" classname="ru.stqa.pft.addressbook.tests.ContactDeleteTest" time="0.597"/>
+  <testcase name="testContactDelete" classname="ru.stqa.pft.addressbook.tests.ContactDeleteTest" time="0.464"/>
   <system-out><![CDATA[]]></system-out>
-  <system-err><![CDATA[1586448851664	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "-marionette" "-foreground" "-no-remote" "-profile" "C:\\Users\\Darkside\\AppData\\Local\\Temp\\rust_mozprofilerAOXOM"
-1586448852281	addons.webextension.doh-rollout@mozilla.org	WARN	Loading extension 'doh-rollout@mozilla.org': Reading manifest: Invalid extension permission: networkStatus
-1586448853129	addons.webextension.screenshots@mozilla.org	WARN	Loading extension 'screenshots@mozilla.org': Reading manifest: Invalid extension permission: mozillaAddons
-1586448853129	addons.webextension.screenshots@mozilla.org	WARN	Loading extension 'screenshots@mozilla.org': Reading manifest: Invalid extension permission: telemetry
-1586448853130	addons.webextension.screenshots@mozilla.org	WARN	Loading extension 'screenshots@mozilla.org': Reading manifest: Invalid extension permission: resource://pdf.js/
-1586448853130	addons.webextension.screenshots@mozilla.org	WARN	Loading extension 'screenshots@mozilla.org': Reading manifest: Invalid extension permission: about:reader*
+  <system-err><![CDATA[1586449700346	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "-marionette" "-foreground" "-no-remote" "-profile" "C:\\Users\\Darkside\\AppData\\Local\\Temp\\rust_mozprofileFTHE3V"
+1586449701001	addons.webextension.doh-rollout@mozilla.org	WARN	Loading extension 'doh-rollout@mozilla.org': Reading manifest: Invalid extension permission: networkStatus
+1586449701804	addons.webextension.screenshots@mozilla.org	WARN	Loading extension 'screenshots@mozilla.org': Reading manifest: Invalid extension permission: mozillaAddons
+1586449701804	addons.webextension.screenshots@mozilla.org	WARN	Loading extension 'screenshots@mozilla.org': Reading manifest: Invalid extension permission: telemetry
+1586449701804	addons.webextension.screenshots@mozilla.org	WARN	Loading extension 'screenshots@mozilla.org': Reading manifest: Invalid extension permission: resource://pdf.js/
+1586449701804	addons.webextension.screenshots@mozilla.org	WARN	Loading extension 'screenshots@mozilla.org': Reading manifest: Invalid extension permission: about:reader*
 JavaScript error: resource://gre/modules/XULStore.jsm, line 66: Error: Can't find profile directory.
-1586448856002	Marionette	INFO	Listening on port 53356
-1586448856566	Marionette	WARN	TLS certificate errors will be ignored for this session
-Apr 09, 2020 6:14:16 PM org.openqa.selenium.remote.ProtocolHandshake createSession
+1586449704719	Marionette	INFO	Listening on port 53651
+1586449705087	Marionette	WARN	TLS certificate errors will be ignored for this session
+Apr 09, 2020 6:28:25 PM org.openqa.selenium.remote.ProtocolHandshake createSession
 INFO: Detected dialect: W3C
 ]]></system-err>
 </testsuite>

@@ -15,9 +15,9 @@ public class ApplicationManager {
   private ContactHelper contactHelper;
   public NavigationHelper navigationHelper;
   public GroupHelper groupHelper;
-  String baseUrl;
+  private String baseUrl;
   boolean acceptNextAlert = true;
-  StringBuffer verificationErrors = new StringBuffer();
+  private StringBuffer verificationErrors;
 
   private SessionHelper sessionHelper;
   private String browser;
@@ -43,6 +43,7 @@ public class ApplicationManager {
     navigationHelper = new NavigationHelper(driver);
     sessionHelper = new SessionHelper(driver);
     sessionHelper.login("admin", "secret");
+    StringBuffer verificationErrors = new StringBuffer();
   }
 
 
