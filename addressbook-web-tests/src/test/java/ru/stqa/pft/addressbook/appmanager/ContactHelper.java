@@ -1,12 +1,12 @@
 package ru.stqa.pft.addressbook.appmanager;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
-import ru.stqa.pft.addressbook.tests.TestBase;
+import org.openqa.selenium.support.ui.Select;
+import ru.stqa.pft.addressbook.model.ContactData;
 
 public class ContactHelper extends HelperBase {
-  WebDriver driver;
-
   public ContactHelper(WebDriver driver) {
     super(driver);
   }
@@ -19,18 +19,18 @@ public class ContactHelper extends HelperBase {
     click(By.xpath("(//input[@name='submit'])[2]"));
   }
 
-  public void fillContactForm() {
-    type(By.name("firstname"), "Kir");
-    type(By.name("middlename"), "Mak");
-    type(By.name("lastname"), "Lik");
-    type(By.name("nickname"), "DS");
-    type(By.name("title"), "QA Automation engineer");
-    type(By.name("company"), "R4");
+  public void fillContactForm(ContactData contactData) {
+    type(By.name("firstname"), contactData.getFirstName());
+    type(By.name("lastname"), contactData.getLastName());
+  
+    if (isElementPresent(By.name("new_group"))) {
+      new Select(driver.findElement(By.name("new_group"))).selectByVisibleText(contactData.getGroup());
+    }
   }
 
   public void initialContactCreation() {
     click(By.linkText("add new"));
-    click(By.xpath("//a[contains(text(),'add new')]"));
+//    click(By.xpath("//a[contains(text(),'add new')]"));
   }
 
   public void submitGroupModification() {
