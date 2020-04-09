@@ -9,10 +9,10 @@ public class ContactEditionTest extends TestBase {
   @Test
   public void testContactEdition() {
     if (! app.getContactHelper().isThereAnyContact()) {
-      app.getContactHelper().createContact(new ContactData("group1", null, "group1"));
+      app.getContactHelper().createContact(new ContactData("gup1", null, "group1"));
     }
     app.getContactHelper().initiateContactEditing();
-    app.getContactHelper().fillContactForm(new ContactData("group8", "group1", null), false);
+    app.getContactHelper().fillContactForm(new ContactData("group8", "group2", null), false);
     app.getContactHelper().updateEditedContactForm();
     app.getContactHelper().returnToHomePage();
   }
