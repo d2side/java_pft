@@ -1,5 +1,6 @@
 package ru.stqa.pft.addressbook.appmanager;
-
+import java.util.regex.Pattern;
+import java.util.concurrent.TimeUnit;
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
@@ -7,13 +8,25 @@ import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
 import ru.stqa.pft.addressbook.model.ContactData;
 
+import java.util.regex.Pattern;
+import java.util.concurrent.TimeUnit;
+import org.testng.annotations.*;
+import static org.testng.Assert.*;
+import org.openqa.selenium.*;
+import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.support.ui.Select;
+
 public class ContactHelper extends HelperBase {
+  WebDriver driver;
+  boolean acceptNextAlert = true;
+
   public ContactHelper(WebDriver driver) {
     super(driver);
   }
 
+
   public void returnToHomePage() {
-    if (isElementPresent(By.id("maintable"))) {
+    if (isElementPresent(By.linkText("home"))) {
       return;
     }
     click(By.linkText("home page"));
@@ -29,19 +42,18 @@ public class ContactHelper extends HelperBase {
     type(By.name("firstname"), contactData.getFirstName());
     type(By.name("lastname"), contactData.getLastName());
 
-    if (creation && contactData.getGroup() == null) {
-      new Select(driver.findElement(By.name("new_group"))).selectByVisibleText("[none]");
-    } else if (creation) {
-      new Select(driver.findElement(By.name("new_group"))).selectByVisibleText(contactData.getGroup());
-    } else {
-      Assert.assertFalse(isElementPresent(By.name("new_group")));
-    }
+//    if (creation && contactData.getGroup() == null) {
+//      new Select(driver.findElement(By.name("new_group"))).selectByVisibleText("[none]");
+//    } else if (creation) {
+//      new Select(driver.findElement(By.name("new_group"))).selectByVisibleText(contactData.getGroup());
+//    } else {
+//      Assert.assertFalse(isElementPresent(By.name("new_group")));
+//    }
 
   }
 
   public void initialContactCreation() {
     click(By.linkText("add new"));
-//    click(By.xpath("//a[contains(text(),'add new')]"));
   }
 
   public void submitGroupModification() {
@@ -80,4 +92,16 @@ public class ContactHelper extends HelperBase {
     click(By.name("selected[]"));
   }
 
+  public void acceptContactDeletion() throws InterruptedException {
+    acceptNextAlert = true;
+    for (int second = 0;; second++) {
+      if (second >= 60) fail("timeout");
+      try { if (isAlertPresent()) break; } catch (Exception e) {}
+      Thread.sleep(12345L);
+    }
+  }
+
+  public void initContactDeletion() {
+    click(By.xpath("//input[@value='Delete']"));
+  }
 }

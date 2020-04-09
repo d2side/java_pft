@@ -16,9 +16,8 @@ public class ApplicationManager {
   public NavigationHelper navigationHelper;
   public GroupHelper groupHelper;
   private String baseUrl;
-  boolean acceptNextAlert = true;
   private StringBuffer verificationErrors;
-
+  boolean acceptNextAlert;
   private SessionHelper sessionHelper;
   private String browser;
 
@@ -43,17 +42,14 @@ public class ApplicationManager {
     navigationHelper = new NavigationHelper(driver);
     sessionHelper = new SessionHelper(driver);
     sessionHelper.login("admin", "secret");
-    StringBuffer verificationErrors = new StringBuffer();
+    contactHelper = new ContactHelper(driver);
   }
 
 
 
   public void stop() {
-    driver.quit();
-    String verificationErrorString = verificationErrors.toString();
-    if (!"".equals(verificationErrorString)) {
-      fail(verificationErrorString);
-    }
+//    driver.quit();
+
   }
 
   private boolean isElementPresent(By by) {
@@ -88,6 +84,10 @@ public class ApplicationManager {
       acceptNextAlert = true;
     }
   }
+//  String verificationErrorString = verificationErrors.toString();
+//    if (!"".equals(verificationErrorString)) {
+//    fail(verificationErrorString);
+//  }
 
   public GroupHelper getGroupHelper() {
     return groupHelper;
@@ -100,4 +100,5 @@ public class ApplicationManager {
   public ContactHelper getContactHelper() {
     return contactHelper;
   }
+
 }

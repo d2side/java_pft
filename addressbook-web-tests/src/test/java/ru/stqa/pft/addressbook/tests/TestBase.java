@@ -9,7 +9,6 @@ import ru.stqa.pft.addressbook.appmanager.ApplicationManager;
 public class TestBase {
 
   protected final ApplicationManager app = new ApplicationManager(BrowserType.CHROME);
-//  protected final ApplicationManager applicationManager = new ApplicationManager();
 
   @BeforeClass(alwaysRun = true)
   public void setUp() throws Exception {
@@ -24,4 +23,5 @@ public class TestBase {
   public ApplicationManager getApplicationManager() {
     return app;
   }
+
 }
