@@ -75,4 +75,12 @@ public class ContactHelper extends HelperBase {
   public boolean isThereAnyContact() {
     return isElementPresent(By.name("selected[]"));
   }
+
+  public void selectContact() {
+    click(By.name("selected[]"));
+  }
+
+  public void initContactDeletion() {
+    click(By.xpath("//input[@value='Delete']"));
+  }
 }
