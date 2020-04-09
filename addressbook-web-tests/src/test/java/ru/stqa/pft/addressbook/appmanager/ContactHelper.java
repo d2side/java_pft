@@ -30,7 +30,7 @@ public class ContactHelper extends HelperBase {
     type(By.name("lastname"), contactData.getLastName());
 
     if (creation && contactData.getGroup() == null) {
-      new Select(driver.findElement(By.name("new_group"))).getFirstSelectedOption();
+      new Select(driver.findElement(By.name("new_group"))).selectByVisibleText("[none]");
     } else if (creation) {
       new Select(driver.findElement(By.name("new_group"))).selectByVisibleText(contactData.getGroup());
     } else {
