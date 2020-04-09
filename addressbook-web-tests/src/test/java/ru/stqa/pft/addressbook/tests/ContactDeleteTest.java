@@ -39,10 +39,17 @@ public class ContactDeleteTest {
   public void testContactDelete() throws Exception {
     driver.get("http://localhost/addressbook/");
     driver.findElement(By.name("selected[]")).click();
+    initContactDeletion();
+    acceptContactDeletion();
+  }
+
+  private void acceptContactDeletion() {
+    driver.switchTo().alert().accept();
+  }
+
+  private void initContactDeletion() {
     acceptNextAlert = true;
     driver.findElement(By.xpath("//input[@value='Delete']")).click();
-    driver.switchTo().alert().accept();
-//    driver.findElement(By.linkText("home")).click();
   }
 
   private String closeAlertAndGetItsText() {

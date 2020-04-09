@@ -80,7 +80,4 @@ public class ContactHelper extends HelperBase {
     click(By.name("selected[]"));
   }
 
-  public void initContactDeletion() {
-    click(By.xpath("//input[@value='Delete']"));
-  }
 }
