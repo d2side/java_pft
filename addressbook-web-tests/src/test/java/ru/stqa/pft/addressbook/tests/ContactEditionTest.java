@@ -8,7 +8,7 @@ public class ContactEditionTest extends TestBase {
   @Test
   public void testContactEdition() {
     app.getContactHelper().initiateContactEditing();
-    app.getContactHelper().fillContactForm(new ContactData("group5", "group1", null), false);
+    app.getContactHelper().fillContactForm(new ContactData("group7", "group1", null), false);
     app.getContactHelper().updateEditedContactForm();
     app.getContactHelper().returnToHomePage();
   }

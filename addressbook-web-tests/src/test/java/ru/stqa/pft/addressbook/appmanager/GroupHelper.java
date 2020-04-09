@@ -41,11 +41,22 @@ public class GroupHelper extends HelperBase {
     click(xpath);
   }
 
-  public void selectGroup(By name) {
-    click(name);
+  public void selectGroup() {
+    click(By.name("selected[]"));
   }
 
   public void initGroupModification() {
     click(By.name("edit"));
+  }
+
+  public void createGroup(GroupData group) {
+    initGroupCreation();
+    fillGroupForm(group);
+    submitGroupCreation();
+    returnToGroupPage();
+  }
+
+  public boolean isThereAnyGroup() {
+   return isElementPresent(By.name("selected[]"));
   }
 }
