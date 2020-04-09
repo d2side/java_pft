@@ -49,10 +49,9 @@ public class ApplicationManager {
 
   public void stop() {
 //    driver.quit();
-
   }
 
-  private boolean isElementPresent(By by) {
+  public boolean isElementPresent(By by) {
     try {
       driver.findElement(by);
       return true;
@@ -61,7 +60,7 @@ public class ApplicationManager {
     }
   }
 
-  private boolean isAlertPresent() {
+  public boolean isAlertPresent() {
     try {
       driver.switchTo().alert();
       return true;
@@ -70,7 +69,7 @@ public class ApplicationManager {
     }
   }
 
-  private String closeAlertAndGetItsText() {
+  public String closeAlertAndGetItsText() {
     try {
       Alert alert = driver.switchTo().alert();
       String alertText = alert.getText();

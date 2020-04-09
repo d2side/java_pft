@@ -81,7 +81,6 @@ public class ContactHelper extends HelperBase {
    initialContactCreation();
     fillContactForm(contactData,  true);
     submitContactCreation();
-    returnToHomePage();
   }
 
   public boolean isThereAnyContact() {
@@ -93,12 +92,8 @@ public class ContactHelper extends HelperBase {
   }
 
   public void acceptContactDeletion() throws InterruptedException {
-    acceptNextAlert = true;
-    for (int second = 0;; second++) {
-      if (second >= 60) fail("timeout");
-      try { if (isAlertPresent()) break; } catch (Exception e) {}
-      Thread.sleep(12345L);
-    }
+//    acceptNextAlert = true;
+    isAlertPresent();
   }
 
   public void initContactDeletion() {
