@@ -13,8 +13,13 @@ public class ContactHelper extends HelperBase {
   }
 
   public void returnToHomePage() {
+    if (isElementPresent(By.id("maintable"))) {
+      return;
+    }
     click(By.linkText("home page"));
-  }
+    }
+
+
 
   public void submitContactCreation() {
     click(By.xpath("(//input[@name='submit'])[2]"));
@@ -49,7 +54,7 @@ public class ContactHelper extends HelperBase {
     type(By.name("middlename"), "Valeryevich");
     type(By.name("lastname"), "Listec");
     type(By.name("nickname"), "Kirez");
-    type(By.name("title"), "Посудомойщик");
+    type(By.name("title"), "Chelik");
     type(By.name("company"), "Filmar");
   }
 
