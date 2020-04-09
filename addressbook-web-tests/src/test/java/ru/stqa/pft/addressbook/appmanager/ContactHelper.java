@@ -29,11 +29,14 @@ public class ContactHelper extends HelperBase {
     type(By.name("firstname"), contactData.getFirstName());
     type(By.name("lastname"), contactData.getLastName());
 
-    if (creation) {
+    if (creation && contactData.getGroup() == null) {
+      new Select(driver.findElement(By.name("new_group"))).getFirstSelectedOption();
+    } else if (creation) {
       new Select(driver.findElement(By.name("new_group"))).selectByVisibleText(contactData.getGroup());
     } else {
       Assert.assertFalse(isElementPresent(By.name("new_group")));
     }
+
   }
 
   public void initialContactCreation() {
