@@ -103,7 +103,7 @@ public class ContactHelper extends HelperBase {
 //  public int countContacts() {
 //    return driver.findElements(By.name("selected[]")).size();
 //  }
-  public int countContacts() {
+  public int getContactsCount() {
     return driver.findElements(By.name("selected[]")).size();
   }
 
