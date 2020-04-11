@@ -27,11 +27,11 @@ public class ContactDeleteTest extends TestBase {
       Thread.sleep(1000);
     }
     app.getContactHelper().returnToHomePage();
-    int before = app.getContactHelper().getContactsCount();
+    int before = app.getContactHelper().countContacts();
     app.getContactHelper().selectContact();
     app.getContactHelper().initContactDeletion();
     app.getContactHelper().acceptContactDeletion();
-    int after = app.getContactHelper().getContactsCount();
+    int after = app.getContactHelper().countContacts();
     Assert.assertEquals(after, before - 1);
   }
 
