@@ -1,19 +1,28 @@
 package ru.stqa.pft.addressbook.tests;
 
+import org.openqa.selenium.By;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import ru.stqa.pft.addressbook.model.ContactData;
 
+import java.util.List;
+
+import static org.testng.Assert.fail;
+
 public class ContactCreationTest extends TestBase {
 
   @Test
-  public void testContactCreation() {
-    int before = app.getContactHelper().getContactsCount();
+  public void testContactCreation() throws InterruptedException {
     app.getContactHelper().returnToHomePage();
+    List<ContactData> before = app.getContactHelper().getContactsList();
     app.getContactHelper().createContact(new ContactData("Nadia6", "Hz", "group3"));
     app.getContactHelper().returnToHomePage();
-    int after = app.getContactHelper().getContactsCount();
-    Assert.assertEquals(after, before + 1);
+    for (int second = 0;; second++) {
+      if (second >= 60) fail("timeout");
+      try { if (! app.isElementPresent(By.xpath("//div[@class='msgbox']"))) break; } catch (Exception e) {}
+      Thread.sleep(1000);
+    }
+    List<ContactData> after = app.getContactHelper().getContactsList();
+    Assert.assertEquals(after.size(), before.size() + 1);
   }
-
 }

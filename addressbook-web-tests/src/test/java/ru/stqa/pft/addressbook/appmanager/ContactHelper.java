@@ -1,4 +1,6 @@
 package ru.stqa.pft.addressbook.appmanager;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.regex.Pattern;
 import java.util.concurrent.TimeUnit;
 import org.openqa.selenium.By;
@@ -15,6 +17,7 @@ import static org.testng.Assert.*;
 import org.openqa.selenium.*;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.support.ui.Select;
+import ru.stqa.pft.addressbook.model.GroupData;
 
 public class ContactHelper extends HelperBase {
   boolean acceptNextAlert = true;
@@ -99,11 +102,18 @@ public class ContactHelper extends HelperBase {
     click(By.xpath("//input[@value='Delete']"));
   }
 
-//  public int countContacts() {
-//    return driver.findElements(By.name("selected[]")).size();
-//  }
   public int getContactsCount() {
     return driver.findElements(By.name("selected[]")).size();
   }
 
+  public List<ContactData> getContactsList() {
+    List<ContactData> contacts = new ArrayList<ContactData>();
+    List<WebElement> elements = driver.findElements(By.cssSelector("td.center input"));
+    for (WebElement element : elements) {
+      String name = element.getText();
+      ContactData contact = new ContactData(name, null, null);
+      contacts.add(contact);
+    }
+    return contacts;
+  }
 }
