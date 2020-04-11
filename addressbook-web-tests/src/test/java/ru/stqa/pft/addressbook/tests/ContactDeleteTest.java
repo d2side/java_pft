@@ -1,6 +1,7 @@
 package ru.stqa.pft.addressbook.tests;
 
 
+import org.testng.Assert;
 import org.testng.annotations.*;
 import org.openqa.selenium.*;
 import ru.stqa.pft.addressbook.model.ContactData;
@@ -25,10 +26,13 @@ public class ContactDeleteTest extends TestBase {
       try { if (! app.isElementPresent(By.xpath("//div[@class='msgbox']"))) break; } catch (Exception e) {}
       Thread.sleep(1000);
     }
+    app.getContactHelper().returnToHomePage();
+    int before = app.getContactHelper().countContacts();
     app.getContactHelper().selectContact();
     app.getContactHelper().initContactDeletion();
     app.getContactHelper().acceptContactDeletion();
-
+    int after = app.getContactHelper().countContacts();
+    Assert.assertEquals(after, before - 1);
   }
 
 }

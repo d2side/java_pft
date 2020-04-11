@@ -99,4 +99,12 @@ public class ContactHelper extends HelperBase {
   public void initContactDeletion() {
     click(By.xpath("//input[@value='Delete']"));
   }
+
+//  public int countContacts() {
+//    return driver.findElements(By.name("selected[]")).size();
+//  }
+  public int countContacts() {
+    return driver.findElements(By.name("selected[]")).size();
+  }
+
 }
