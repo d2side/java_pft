@@ -16,7 +16,7 @@ public class GroupHelper extends HelperBase {
   }
 
   public void returnToGroupPage() {
-    click(By.linkText("group page"));
+    click(By.xpath("//a[contains(text(),'group page')]"));
   }
 
   public void submitGroupCreation() {
