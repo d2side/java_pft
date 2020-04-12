@@ -10,7 +10,7 @@ import java.util.List;
 
 public class ContactEditionTest extends TestBase {
 
-  @Test
+  @Test(enabled = false)
   public void testContactEdition() throws InterruptedException {
     if (! app.getContactHelper().isThereAnyContact()) {
       app.getContactHelper().createContact(new ContactData("gup1", null, "group1"));

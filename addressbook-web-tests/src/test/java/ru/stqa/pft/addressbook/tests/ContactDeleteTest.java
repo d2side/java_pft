@@ -20,7 +20,7 @@ public class ContactDeleteTest extends TestBase {
 //  private StringBuffer verificationErrors = new StringBuffer();
 
 
-  @Test
+  @Test(enabled = false)
   public void testContactDelete() throws Exception {
     if (! app.getContactHelper().isThereAnyContact()) {
       app.getContactHelper().createContact(new ContactData("gup1", null, "group1"));

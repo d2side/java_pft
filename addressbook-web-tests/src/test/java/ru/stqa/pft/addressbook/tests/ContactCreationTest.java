@@ -15,7 +15,7 @@ import static org.testng.Assert.fail;
 
 public class ContactCreationTest extends TestBase {
 
-  @Test
+  @Test(enabled = false)
   public void testContactCreation() throws InterruptedException {
     app.getContactHelper().returnToHomePage();
     List<ContactData> before = app.getContactHelper().getContactsList();
