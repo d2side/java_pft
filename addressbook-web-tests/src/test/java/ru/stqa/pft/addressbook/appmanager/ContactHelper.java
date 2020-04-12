@@ -110,8 +110,13 @@ public class ContactHelper extends HelperBase {
     List<ContactData> contacts = new ArrayList<ContactData>();
     List<WebElement> elements = driver.findElements(By.cssSelector("td.center input"));
     for (WebElement element : elements) {
-      String name = element.getText();
-      ContactData contact = new ContactData(name, null, null);
+//      String name = element.getAttribute("title").replaceAll("\\'(')'", "");
+//      String lastName = element.getAttribute("title").replaceAll("\\'(')'", "");
+      String b1 = "(";
+      String b2 = ")";
+      String name = element.getAttribute("title").replaceFirst("Select ", "").replace("(", "").replace(")", "");
+      String lastName = element.getAttribute("title").replaceFirst("Select ", "").replace("(", "").replace(")", "");
+      ContactData contact = new ContactData(name, lastName, null);
       contacts.add(contact);
     }
     return contacts;
