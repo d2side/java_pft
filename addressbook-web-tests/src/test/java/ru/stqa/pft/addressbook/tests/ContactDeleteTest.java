@@ -7,6 +7,7 @@ import org.openqa.selenium.*;
 import ru.stqa.pft.addressbook.model.ContactData;
 import ru.stqa.pft.addressbook.model.GroupData;
 
+import java.util.Comparator;
 import java.util.List;
 
 import static org.testng.Assert.fail;
@@ -24,23 +25,20 @@ public class ContactDeleteTest extends TestBase {
     if (! app.getContactHelper().isThereAnyContact()) {
       app.getContactHelper().createContact(new ContactData("gup1", null, "group1"));
     }
-    for (int second = 0;; second++) {
-      if (second >= 60) fail("timeout");
-      try { if (! app.isElementPresent(By.xpath("//div[@class='msgbox']"))) break; } catch (Exception e) {}
-      Thread.sleep(1000);
-    }
+    app.getContactHelper().waitForTablePresent();
     app.getContactHelper().returnToHomePage();
     List<ContactData> before = app.getContactHelper().getContactsList();
     app.getContactHelper().selectContact();
     app.getContactHelper().initContactDeletion();
     app.getContactHelper().acceptContactDeletion();
-    for (int second = 0;; second++) {
-      if (second >= 60) fail("timeout");
-      try { if (! app.isElementPresent(By.xpath("//div[@class='msgbox']"))) break; } catch (Exception e) {}
-      Thread.sleep(1000);
-    }
+    app.getContactHelper().waitForTablePresent();
     List<ContactData> after = app.getContactHelper().getContactsList();
     Assert.assertEquals(after.size(), before.size() - 1);
+    before.remove(before.size() - 1);
+    Comparator<? super ContactData> byName = (c1, c2) -> CharSequence.compare(c1.getFirstName(), c2.getFirstName());
+    before.sort(byName);
+    after.sort(byName);
+    Assert.assertEquals(before, after);
   }
 
 }

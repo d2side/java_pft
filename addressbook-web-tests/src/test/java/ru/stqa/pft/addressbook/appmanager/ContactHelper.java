@@ -32,8 +32,7 @@ public class ContactHelper extends HelperBase {
       return;
     }
     click(By.linkText("home page"));
-    }
-
+  }
 
 
   public void submitContactCreation() {
@@ -80,8 +79,8 @@ public class ContactHelper extends HelperBase {
   }
 
   public void createContact(ContactData contactData) {
-   initialContactCreation();
-    fillContactForm(contactData,  true);
+    initialContactCreation();
+    fillContactForm(contactData, true);
     submitContactCreation();
   }
 
@@ -116,9 +115,25 @@ public class ContactHelper extends HelperBase {
       String b2 = ")";
       String name = element.getAttribute("title").replaceFirst("Select ", "").replace("(", "").replace(")", "");
       String lastName = element.getAttribute("title").replaceFirst("Select ", "").replace("(", "").replace(")", "");
+//      name = name.substring(0, name.lastIndexOf(" "));
+      String[] nameSplit = name.split(" ");
+      String[] lastnameSplit = name.split(" ");
+      name = nameSplit[0];
+      lastName = lastnameSplit[1];
       ContactData contact = new ContactData(name, lastName, null);
       contacts.add(contact);
     }
     return contacts;
+  }
+
+  public void waitForTablePresent() throws InterruptedException {
+    for (int second = 0; ; second++) {
+      if (second >= 60) fail("timeout");
+      try {
+        if (isElementPresent(By.xpath("//table[@id='maintable']"))) break;
+      } catch (Exception e) {
+      }
+      Thread.sleep(1000);
+    }
   }
 }
