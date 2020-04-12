@@ -16,7 +16,7 @@ public class ContactEditionTest extends TestBase {
     }
     app.getContactHelper().returnToHomePage();
     List<GroupData> before = app.getGroupHelper().getGroupList();
-    app.getContactHelper().selectContact();
+    app.getContactHelper().selectContact(before.size() - 1);
     app.getContactHelper().initiateContactEditing();
     app.getContactHelper().fillContactForm(new ContactData("group8", "group2", null), false);
     app.getContactHelper().updateEditedContactForm();

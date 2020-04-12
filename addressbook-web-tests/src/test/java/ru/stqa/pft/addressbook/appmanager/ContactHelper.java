@@ -20,7 +20,6 @@ import org.openqa.selenium.support.ui.Select;
 import ru.stqa.pft.addressbook.model.GroupData;
 
 public class ContactHelper extends HelperBase {
-  boolean acceptNextAlert = true;
 
   public ContactHelper(WebDriver driver) {
     super(driver);
@@ -89,17 +88,17 @@ public class ContactHelper extends HelperBase {
     return isElementPresent(By.name("selected[]"));
   }
 
-  public void selectContact() {
-    click(By.name("selected[]"));
+  public void selectContact(int index) {
+    driver.findElements(By.name("selected[]")).get(index);
   }
 
-  public void acceptContactDeletion() throws InterruptedException {
-//    acceptNextAlert = true;
+  public void acceptContactDeletion() {
     isAlertPresent();
   }
 
   public void initContactDeletion() {
     click(By.xpath("//input[@value='Delete']"));
+    isAlertPresent();
   }
 
   public int getContactsCount() {
@@ -116,4 +115,6 @@ public class ContactHelper extends HelperBase {
     }
     return contacts;
   }
+
+
 }

@@ -25,6 +25,7 @@ public class HelperBase {
   }
 
   public boolean isAlertPresent() {
+
     try {
       driver.switchTo().alert().accept();;
       return true;
