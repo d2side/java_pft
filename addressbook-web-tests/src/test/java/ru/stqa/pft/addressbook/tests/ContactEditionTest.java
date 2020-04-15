@@ -15,14 +15,14 @@ public class ContactEditionTest extends TestBase {
     if (! app.getContactHelper().isThereAnyContact()) {
       app.getContactHelper().createContact(new ContactData("gup1", null, "group1"));
     }
-    app.getContactHelper().returnToHomePage();
+    app.goTo().returnToHomePage();
     List<ContactData> before = app.getContactHelper().getContactsList();
     app.getContactHelper().selectContact();
     app.getContactHelper().initiateContactEditing();
     ContactData contact = new ContactData("Nadia6", "Hz", "group1");
     app.getContactHelper().fillContactForm(contact, false);
     app.getContactHelper().updateEditedContactForm();
-    app.getContactHelper().returnToHomePage();
+    app.goTo().returnToHomePage();
     app.getContactHelper().waitForTablePresent();
     List<ContactData> after = app.getContactHelper().getContactsList();
     Assert.assertEquals(after.size(), before.size());

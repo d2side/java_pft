@@ -27,12 +27,7 @@ public class ContactHelper extends HelperBase {
   }
 
 
-  public void returnToHomePage() {
-    if (isElementPresent(By.linkText("home"))) {
-      return;
-    }
-    click(By.linkText("home page"));
-  }
+
 
 
   public void submitContactCreation() {

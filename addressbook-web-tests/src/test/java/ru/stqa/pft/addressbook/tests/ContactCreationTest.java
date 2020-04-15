@@ -17,12 +17,12 @@ public class ContactCreationTest extends TestBase {
 
   @Test(enabled = false)
   public void testContactCreation() throws InterruptedException {
-    app.getContactHelper().returnToHomePage();
+    app.goTo().returnToHomePage();
     List<ContactData> before = app.getContactHelper().getContactsList();
     ContactData contact = new ContactData("Nadia6", "Hz", "group3");
     app.getContactHelper().createContact(contact);
     app.getContactHelper().waitForTablePresent();
-    app.getContactHelper().returnToHomePage();
+    app.goTo().returnToHomePage();
     List<ContactData> after = app.getContactHelper().getContactsList();
     Assert.assertEquals(after.size(), before.size() + 1);
     before.add(contact);

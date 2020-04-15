@@ -33,13 +33,7 @@ public class GroupHelper extends HelperBase {
     click(By.name("new"));
   }
 
-  public void goToGroupPage() {
-      if (isElementPresent(By.tagName("h1")) && driver.findElement(By.tagName("h1")).getText().equals("Groups")
-                && isElementPresent(By.name("new"))) {
-        return;
-      }
-        click(By.linkText("groups"));
-    }
+
 
   public void deleteSelectedGroup(By xpath) {
     click(xpath);
@@ -57,17 +51,22 @@ public class GroupHelper extends HelperBase {
     click(By.name("update"));
   }
 
-  public void createGroup(GroupData group) {
+  public void create(GroupData group) {
     initGroupCreation();
     fillGroupForm(group);
     submitGroupCreation();
     returnToGroupPage();
   }
-  public void modifyGroup(int index, GroupData group) {
+  public void modify(int index, GroupData group) {
     selectGroup(index);
     initGroupModification();
     fillGroupForm(group);
     submitGroupModification();
+    returnToGroupPage();
+  }
+  public void delete(int index) {
+    selectGroup(index);
+    deleteSelectedGroup(By.xpath("(//input[@name='delete'])[2]"));
     returnToGroupPage();
   }
 
@@ -79,7 +78,7 @@ public class GroupHelper extends HelperBase {
     return driver.findElements(By.name("selected[]")).size();
   }
 
-  public List<GroupData> getGroupList() {
+  public List<GroupData> list() {
     List<GroupData> groups = new ArrayList<GroupData>();
     List<WebElement> elements = driver.findElements(By.cssSelector("span.group"));
   for (WebElement element : elements) {
@@ -90,4 +89,5 @@ public class GroupHelper extends HelperBase {
   }
     return groups;
   }
+
 }
