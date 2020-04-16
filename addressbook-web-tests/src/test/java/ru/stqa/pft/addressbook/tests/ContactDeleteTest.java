@@ -17,20 +17,20 @@ public class ContactDeleteTest extends TestBase {
 //  private StringBuffer verificationErrors = new StringBuffer();
 @BeforeMethod
 public void ensurePreconditions() throws Exception {
-  if (! app.contact().isThereAnyContact()) {
-    app.contact().createContact(new ContactData("gup1", "group1"));
+  if (app.contact().list().size() == 0) {
+    app.contact().create(new ContactData("gup1", "group1"));
   }
-  app.goTo().returnToHomePage();
+  app.goTo().homePage();
 }
 
   @Test
   public void testContactDelete() throws Exception {
     app.contact().waitForTablePresent();
-    app.goTo().returnToHomePage();
-    List<ContactData> before = app.contact().getContactsList();
+    app.goTo().homePage();
+    List<ContactData> before = app.contact().list();
     int index = before.size() - 1;
-    app.contact().deleteSelectedContact(index);
-    List<ContactData> after = app.contact().getContactsList();
+    app.contact().delete(index);
+    List<ContactData> after = app.contact().list();
     Assert.assertEquals(after.size(), before.size() - 1);
     before.remove(index);
     Assert.assertEquals(before, after);

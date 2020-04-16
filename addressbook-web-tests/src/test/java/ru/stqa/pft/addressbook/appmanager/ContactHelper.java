@@ -76,7 +76,7 @@ public class ContactHelper extends HelperBase {
     click(By.xpath("//input[@name='update'][2]"));
   }
 
-  public void createContact(ContactData contactData) throws InterruptedException {
+  public void create(ContactData contactData) throws InterruptedException {
     initialContactCreation();
     fillContactForm(contactData, true);
     submitContactCreation();
@@ -105,7 +105,7 @@ public class ContactHelper extends HelperBase {
     return driver.findElements(By.name("selected[]")).size();
   }
 
-  public void modifyContact(int index, ContactData contactData) throws InterruptedException {
+  public void modify(int index, ContactData contactData) throws InterruptedException {
     selectContact(index);
     initiateContactEditing();
     fillContactForm(contactData, false);
@@ -113,7 +113,7 @@ public class ContactHelper extends HelperBase {
     returnToHomePage();
     waitForTablePresent();
   }
-  public void deleteSelectedContact(int index) throws InterruptedException {
+  public void delete(int index) throws InterruptedException {
     selectContact(index);
     initContactDeletion();
     acceptContactDeletion();
@@ -127,7 +127,7 @@ public class ContactHelper extends HelperBase {
     click(By.linkText("home page"));
   }
 
-  public List<ContactData> getContactsList() {
+  public List<ContactData> list() {
     List<ContactData> contacts = new ArrayList<ContactData>();
     List<WebElement> elements = driver.findElements(By.cssSelector("td.center input"));
     for (WebElement element : elements) {
