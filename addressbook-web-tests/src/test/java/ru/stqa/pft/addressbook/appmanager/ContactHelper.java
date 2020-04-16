@@ -141,8 +141,7 @@ public class ContactHelper extends HelperBase {
 //      String[] lastnameSplit = name.split(" ");
       name = nameSplit[0];
 //      lastName = lastnameSplit[1];
-      ContactData contact = new ContactData(name, null);
-      contacts.add(contact);
+      contacts.add(new ContactData().withFirstName(name));
     }
     return contacts;
   }

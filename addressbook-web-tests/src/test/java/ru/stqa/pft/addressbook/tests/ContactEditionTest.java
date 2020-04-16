@@ -12,7 +12,7 @@ public class ContactEditionTest extends TestBase {
   @BeforeMethod
   public void ensurePreconditions() throws Exception {
     if (app.contact().list().size() == 0) {
-      app.contact().create(new ContactData("gup1", "group1"));
+      app.contact().create(new ContactData().withFirstName("Nadia6"));
     }
     app.goTo().homePage();
   }
@@ -21,7 +21,7 @@ public class ContactEditionTest extends TestBase {
   public void testContactEdition() throws InterruptedException {
     List<ContactData> before = app.contact().list();
     int index = before.size() - 1;
-    ContactData contact = new ContactData("Nadia6", "group1");
+    ContactData contact = new ContactData().withFirstName("Nadia6");
     app.contact().modify(index, contact);
     List<ContactData> after = app.contact().list();
     Assert.assertEquals(after.size(), before.size());
@@ -29,6 +29,5 @@ public class ContactEditionTest extends TestBase {
     before.add(contact);
     Assert.assertEquals(after, before);
   }
-
 
 }
