@@ -80,7 +80,6 @@ public class GroupHelper extends HelperBase {
 
   public Groups all() {
     if (groupCache != null) {
-      //возможно проблема в конструкторе групп
       return new Groups(groupCache);
     }
     groupCache = new Groups();
@@ -94,4 +93,7 @@ public class GroupHelper extends HelperBase {
   }
 
 
+  public int count() {
+    return driver.findElements(By.name("selected[]")).size();
+  }
 }

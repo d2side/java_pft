@@ -1,14 +1,12 @@
 package ru.stqa.pft.addressbook.tests;
 
-import org.openqa.selenium.By;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import ru.stqa.pft.addressbook.model.ContactData;
-import ru.stqa.pft.addressbook.model.GroupData;
 
 import java.util.Comparator;
-import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.fail;
@@ -18,18 +16,14 @@ public class ContactCreationTest extends TestBase {
   @Test(enabled = false)
   public void testContactCreation() throws InterruptedException {
     app.goTo().returnToHomePage();
-    List<ContactData> before = app.getContactHelper().getContactsList();
+    List<ContactData> before = app.contact().all();
     ContactData contact = new ContactData("Nadia6", "Hz", "group3");
-    app.getContactHelper().createContact(contact);
-    app.getContactHelper().waitForTablePresent();
+    app.contact().createContact(contact);
+    app.contact().waitForTablePresent();
     app.goTo().returnToHomePage();
-    List<ContactData> after = app.getContactHelper().getContactsList();
+    List<ContactData> after = app.contact().all();
     Assert.assertEquals(after.size(), before.size() + 1);
     before.add(contact);
-    Comparator<? super ContactData> byName = (c1, c2) -> CharSequence.compare(c1.getFirstName(), c2.getFirstName());
-//    Assert.assertEquals(new HashSet<>(after), new HashSet<>(before));
-//    before.sort(byName);
-//    after.sort(byName);
     assertEquals(before, after);
   }
 }

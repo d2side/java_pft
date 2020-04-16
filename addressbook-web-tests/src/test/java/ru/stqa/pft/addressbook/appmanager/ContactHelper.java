@@ -1,6 +1,8 @@
 package ru.stqa.pft.addressbook.appmanager;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 import java.util.regex.Pattern;
 import java.util.concurrent.TimeUnit;
 import org.openqa.selenium.By;
@@ -18,6 +20,7 @@ import org.openqa.selenium.*;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.support.ui.Select;
 import ru.stqa.pft.addressbook.model.GroupData;
+import ru.stqa.pft.addressbook.model.Groups;
 
 public class ContactHelper extends HelperBase {
   boolean acceptNextAlert = true;
@@ -100,7 +103,7 @@ public class ContactHelper extends HelperBase {
     return driver.findElements(By.name("selected[]")).size();
   }
 
-  public List<ContactData> getContactsList() {
+  public List<ContactData> all() {
     List<ContactData> contacts = new ArrayList<ContactData>();
     List<WebElement> elements = driver.findElements(By.cssSelector("td.center input"));
     for (WebElement element : elements) {
@@ -131,4 +134,5 @@ public class ContactHelper extends HelperBase {
       Thread.sleep(1000);
     }
   }
-}
+  }
+

@@ -19,6 +19,7 @@ public class ContactData {
     this.group = group;
   }
 
+
   public String getFirstName() {
     return firstName;
   }
@@ -31,11 +32,8 @@ public class ContactData {
 //    return middleName;
 //  }
 
-  public String getLastName() {
-    return lastName;
-  }
 
-//
+
 //  public String getNickName() {
 //    return nickName;
 //  }
@@ -47,6 +45,7 @@ public class ContactData {
 //  public String getCompany() {
 //    return company;
 //  }
+
 
   @Override
   public boolean equals(Object o) {
@@ -70,4 +69,7 @@ public class ContactData {
             '}';
   }
 
+  public String getLastName() {
+    return lastName;
+  }
 }
