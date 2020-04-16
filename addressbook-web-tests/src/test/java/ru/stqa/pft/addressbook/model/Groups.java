@@ -24,14 +24,12 @@ public class Groups extends ForwardingSet<GroupData> {
   public Groups withAdded(GroupData group) {
     Groups groups = new Groups(this);
     groups.add(group);
-    groups.add(group);
     return groups;
   }
 
   public Groups without(GroupData group) {
     Groups groups = new Groups(this);
     groups.remove(group);
-    groups.add(group);
     return groups;
   }
 }

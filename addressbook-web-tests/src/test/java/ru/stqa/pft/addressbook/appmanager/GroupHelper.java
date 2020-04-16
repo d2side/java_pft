@@ -37,8 +37,8 @@ public class GroupHelper extends HelperBase {
   }
 
 
-  public void deleteSelectedGroup(By xpath) {
-    click(xpath);
+  public void deleteSelectedGroup() {
+    click(By.name("delete"));
   }
 
   public void selectGroupById(int id) {
@@ -69,7 +69,7 @@ public class GroupHelper extends HelperBase {
 
   public void delete(GroupData group) {
     selectGroupById(group.getId());
-    deleteSelectedGroup(By.xpath("(//input[@name='delete'])[2]"));
+    deleteSelectedGroup();
     returnToGroupPage();
   }
 
