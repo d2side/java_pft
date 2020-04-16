@@ -39,7 +39,7 @@ public class ContactHelper extends HelperBase {
 
   public void fillContactForm(ContactData contactData, boolean creation) {
     type(By.name("firstname"), contactData.getFirstName());
-    type(By.name("lastname"), contactData.getLastName());
+//    type(By.name("lastname"), contactData.getLastName());
 
 //    if (creation && contactData.getGroup() == null) {
 //      new Select(driver.findElement(By.name("new_group"))).selectByVisibleText("[none]");
@@ -76,18 +76,20 @@ public class ContactHelper extends HelperBase {
     click(By.xpath("//input[@name='update'][2]"));
   }
 
-  public void createContact(ContactData contactData) {
+  public void createContact(ContactData contactData) throws InterruptedException {
     initialContactCreation();
     fillContactForm(contactData, true);
     submitContactCreation();
+    waitForTablePresent();
+    returnToHomePage();
   }
 
   public boolean isThereAnyContact() {
     return isElementPresent(By.name("selected[]"));
   }
 
-  public void selectContact() {
-    click(By.name("selected[]"));
+  public void selectContact(int index) {
+    driver.findElements(By.name("selected[]")).get(index).click();
   }
 
   public void acceptContactDeletion() throws InterruptedException {
@@ -103,7 +105,29 @@ public class ContactHelper extends HelperBase {
     return driver.findElements(By.name("selected[]")).size();
   }
 
-  public List<ContactData> all() {
+  public void modifyContact(int index, ContactData contactData) throws InterruptedException {
+    selectContact(index);
+    initiateContactEditing();
+    fillContactForm(contactData, false);
+    updateEditedContactForm();
+    returnToHomePage();
+    waitForTablePresent();
+  }
+  public void deleteSelectedContact(int index) throws InterruptedException {
+    selectContact(index);
+    initContactDeletion();
+    acceptContactDeletion();
+    waitForTablePresent();
+  }
+
+  public void returnToHomePage() {
+    if (isElementPresent(By.linkText("home"))) {
+      return;
+    }
+    click(By.linkText("home page"));
+  }
+
+  public List<ContactData> getContactsList() {
     List<ContactData> contacts = new ArrayList<ContactData>();
     List<WebElement> elements = driver.findElements(By.cssSelector("td.center input"));
     for (WebElement element : elements) {
@@ -112,13 +136,12 @@ public class ContactHelper extends HelperBase {
       String b1 = "(";
       String b2 = ")";
       String name = element.getAttribute("title").replaceFirst("Select ", "").replace("(", "").replace(")", "");
-      String lastName = element.getAttribute("title").replaceFirst("Select ", "").replace("(", "").replace(")", "");
-//      name = name.substring(0, name.lastIndexOf(" "));
+//      String lastName = element.getAttribute("title").replaceFirst("Select ", "").replace("(", "").replace(")", "");
       String[] nameSplit = name.split(" ");
-      String[] lastnameSplit = name.split(" ");
+//      String[] lastnameSplit = name.split(" ");
       name = nameSplit[0];
-      lastName = lastnameSplit[1];
-      ContactData contact = new ContactData(name, lastName, null);
+//      lastName = lastnameSplit[1];
+      ContactData contact = new ContactData(name, null);
       contacts.add(contact);
     }
     return contacts;

@@ -5,15 +5,15 @@ import java.util.Objects;
 public class ContactData {
   private final String firstName;
   //  private final String middleName;
-  private final String lastName;
+//  private final String lastName;
   //  private final String nickName;
 //  private final String title;
   private final String group;
 
-  public ContactData(String firstName, String lastName, String group) {
+  public ContactData(String firstName, String group) {
     this.firstName = firstName;
 //    this.middleName = middleName;
-    this.lastName = lastName;
+//    this.lastName = lastName;
 //    this.nickName = nickName;
 //    this.title = title;
     this.group = group;
@@ -52,24 +52,22 @@ public class ContactData {
     if (this == o) return true;
     if (o == null || getClass() != o.getClass()) return false;
     ContactData that = (ContactData) o;
-    return Objects.equals(firstName, that.firstName) &&
-            Objects.equals(lastName, that.lastName);
+    return Objects.equals(firstName, that.firstName);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(firstName, lastName);
+    return Objects.hash(firstName);
   }
 
   @Override
   public String toString() {
     return "ContactData{" +
             "firstName='" + firstName + '\'' +
-            ", lastName='" + lastName + '\'' +
             '}';
   }
 
-  public String getLastName() {
-    return lastName;
-  }
+//  public String getLastName() {
+//    return lastName;
+//  }
 }
